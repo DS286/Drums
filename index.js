@@ -3,11 +3,12 @@ for (var i = 0; i < len; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
     var x = this.innerHTML;
     sound(x);
-
+    buttonAnimation(x);
   });
 }
 document.addEventListener("keydown",function (event){
   sound(event.key);
+  buttonAnimation(event.key);
 });
 function sound(x)
 {
@@ -41,4 +42,12 @@ function sound(x)
       audio.play();
 
   }
+}
+
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+  }, 100);
 }
